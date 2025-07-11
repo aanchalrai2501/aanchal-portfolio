@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -141,8 +140,12 @@ const Index = () => {
               </div>
               {/* Inner container */}
               <div className="relative w-full h-full rounded-full bg-gradient-to-r from-purple-500 via-blue-500 to-teal-500 p-1">
-                <div className="w-full h-full rounded-full bg-slate-900 flex items-center justify-center group-hover:bg-slate-800 transition-colors duration-300">
-                  <User className="w-20 h-20 text-transparent bg-gradient-to-r from-purple-400 via-blue-400 to-teal-400 bg-clip-text" />
+                <div className="w-full h-full rounded-full overflow-hidden group-hover:scale-105 transition-transform duration-300">
+                  <img 
+                    src="https://cdn.corenexis.com/media?5pdvhr&168H&p&b&ykft.jpg" 
+                    alt="Aanchal Rai" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
               {/* Floating sparkles */}
