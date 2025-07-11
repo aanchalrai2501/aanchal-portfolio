@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,7 +24,11 @@ import {
   Target,
   TrendingUp,
   Sparkles,
-  ChevronDown
+  ChevronDown,
+  GraduationCap,
+  Calendar,
+  MapPin,
+  Zap
 } from "lucide-react";
 
 const Index = () => {
@@ -43,10 +48,10 @@ const Index = () => {
   };
 
   const skills = [
-    { name: "Python", level: 85, icon: Code },
-    { name: "SQL", level: 80, icon: Database },
-    { name: "Data Visualization", level: 75, icon: BarChart3 },
-    { name: "Machine Learning", level: 70, icon: Brain }
+    { name: "Python", level: 85, icon: Code, color: "from-yellow-400 to-orange-500" },
+    { name: "SQL", level: 80, icon: Database, color: "from-blue-400 to-blue-600" },
+    { name: "Data Visualization", level: 75, icon: BarChart3, color: "from-green-400 to-emerald-500" },
+    { name: "Machine Learning", level: 70, icon: Brain, color: "from-purple-400 to-pink-500" }
   ];
 
   const projects = [
@@ -54,25 +59,56 @@ const Index = () => {
       title: "Music Store Analysis",
       tools: ["SQL", "Data Analysis"],
       description: "Used SQL joins across multiple tables to uncover customer behavior, top cities, and spending patterns.",
-      icon: BarChart3
+      icon: BarChart3,
+      gradient: "from-blue-500 to-cyan-500"
     },
     {
       title: "Credit Card Analysis",
       tools: ["SQL", "Business Intelligence"],
       description: "Extracted growth trends and card usage patterns for strategic insights.",
-      icon: TrendingUp
+      icon: TrendingUp,
+      gradient: "from-green-500 to-emerald-500"
     },
     {
       title: "Diwali Sales Analysis",
       tools: ["Python", "Pandas", "Matplotlib"],
       description: "Cleaned and visualized sales data to identify festival buying patterns.",
-      icon: Target
+      icon: Target,
+      gradient: "from-orange-500 to-red-500"
     },
     {
       title: "Student Score Analysis",
       tools: ["Python", "Statistical Analysis"],
       description: "Analyzed score trends and correlations to predict student performance.",
-      icon: Award
+      icon: Award,
+      gradient: "from-purple-500 to-pink-500"
+    }
+  ];
+
+  const services = [
+    {
+      title: "Data Analysis",
+      description: "Cleaning, transforming, and interpreting data for actionable insights. I help businesses make data-driven decisions through comprehensive analysis.",
+      icon: Database,
+      gradient: "from-blue-500 to-indigo-600"
+    },
+    {
+      title: "Data Visualization",
+      description: "Creating clear, interactive dashboards and visual reports that tell compelling stories with your data and drive strategic decisions.",
+      icon: BarChart3,
+      gradient: "from-green-500 to-teal-600"
+    },
+    {
+      title: "Machine Learning",
+      description: "Building predictive models and algorithms to extract insights from complex datasets and automate decision-making processes.",
+      icon: Brain,
+      gradient: "from-purple-500 to-pink-600"
+    },
+    {
+      title: "Business Intelligence",
+      description: "Transforming raw data into strategic insights through advanced analytics and comprehensive reporting solutions.",
+      icon: TrendingUp,
+      gradient: "from-orange-500 to-red-600"
     }
   ];
 
@@ -199,54 +235,98 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-20 px-4 relative">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            About <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Me</span>
-          </h2>
+      {/* Enhanced About Section */}
+      <section className="py-24 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-800/20 to-transparent"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              About <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Me</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto rounded-full"></div>
+          </div>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <Card className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 transform hover:scale-[1.02] shadow-xl">
                 <CardContent className="p-8">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                      <User className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-white">Personal Journey</h3>
+                  </div>
+                  
                   <p className="text-slate-300 text-lg leading-relaxed mb-6">
                     I'm currently pursuing B.Tech in Mechanical Engineering at NIT Surat (2022–2026). 
                     With a strong interest in data science, I enjoy solving real-world problems using data.
                   </p>
                   
-                  <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                    I completed my 10th and 12th at St. Mary's School with 91.22% and 85.56% respectively, 
-                    and I'm passionate about leveraging Python, SQL, ML models, and data dashboards to 
-                    create meaningful insights.
+                  <p className="text-slate-300 text-lg leading-relaxed">
+                    I'm passionate about leveraging Python, SQL, ML models, and data dashboards to 
+                    create meaningful insights that drive decision-making.
                   </p>
-                  
-                  <div className="flex flex-wrap gap-3">
-                    <Badge className="bg-purple-600/20 text-purple-300 border-purple-500/30">Python</Badge>
-                    <Badge className="bg-blue-600/20 text-blue-300 border-blue-500/30">SQL</Badge>
-                    <Badge className="bg-green-600/20 text-green-300 border-green-500/30">Machine Learning</Badge>
-                    <Badge className="bg-orange-600/20 text-orange-300 border-orange-500/30">Data Visualization</Badge>
-                  </div>
                 </CardContent>
               </Card>
+              
+              <div className="flex flex-wrap gap-3">
+                {["Python", "SQL", "Machine Learning", "Data Visualization", "Pandas", "Matplotlib"].map((skill) => (
+                  <Badge 
+                    key={skill}
+                    className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 text-purple-300 border-purple-500/30 px-4 py-2 text-sm font-medium hover:from-purple-500/30 hover:to-blue-500/30 transition-all duration-300 cursor-default"
+                  >
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
             </div>
             
             <div className="space-y-6">
-              <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+              <Card className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 transform hover:scale-[1.02] shadow-xl">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold text-white mb-4">Education</h3>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="text-lg font-medium text-purple-300">B.Tech Mechanical Engineering</h4>
-                      <p className="text-slate-400">NIT Surat • 2022–2026</p>
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                      <GraduationCap className="w-6 h-6 text-white" />
                     </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-purple-300">Higher Secondary (12th)</h4>
-                      <p className="text-slate-400">St. Mary's School • 85.56%</p>
+                    <h3 className="text-2xl font-semibold text-white">Education</h3>
+                  </div>
+                  
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-3 h-3 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <h4 className="text-lg font-medium text-purple-300">B.Tech Mechanical Engineering</h4>
+                        <div className="flex items-center gap-2 text-slate-400 mt-1">
+                          <MapPin className="w-4 h-4" />
+                          <span>NIT Surat</span>
+                          <Calendar className="w-4 h-4 ml-2" />
+                          <span>2022–2026</span>
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <h4 className="text-lg font-medium text-purple-300">Secondary (10th)</h4>
-                      <p className="text-slate-400">St. Mary's School • 91.22%</p>
+                    
+                    <div className="flex items-start gap-4">
+                      <div className="w-3 h-3 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <h4 className="text-lg font-medium text-blue-300">Higher Secondary (12th)</h4>
+                        <div className="flex items-center gap-2 text-slate-400 mt-1">
+                          <MapPin className="w-4 h-4" />
+                          <span>St. Mary's School</span>
+                          <span className="ml-2 text-green-400 font-medium">85.56%</span>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <div className="w-3 h-3 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <div>
+                        <h4 className="text-lg font-medium text-green-300">Secondary (10th)</h4>
+                        <div className="flex items-center gap-2 text-slate-400 mt-1">
+                          <MapPin className="w-4 h-4" />
+                          <span>St. Mary's School</span>
+                          <span className="ml-2 text-green-400 font-medium">91.22%</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
@@ -256,26 +336,48 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-20 px-4 bg-slate-800/30">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            My <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Skills</span>
-          </h2>
+      {/* Enhanced Skills Section */}
+      <section className="py-24 px-4 bg-gradient-to-b from-slate-800/30 to-slate-900/30 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(147,51,234,0.1),transparent_70%)]"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              My <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Skills</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto rounded-full"></div>
+            <p className="text-slate-400 text-lg mt-6 max-w-2xl mx-auto">
+              Continuously learning and growing in the data science ecosystem
+            </p>
+          </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {skills.map((skill, index) => (
-              <Card key={skill.name} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all transform hover:scale-105">
-                <CardContent className="p-6 text-center">
-                  <skill.icon className="w-12 h-12 mx-auto mb-4 text-purple-400" />
-                  <h3 className="text-xl font-semibold text-white mb-3">{skill.name}</h3>
-                  <div className="w-full bg-slate-700 rounded-full h-2 mb-2">
+              <Card 
+                key={skill.name} 
+                className="group bg-gradient-to-br from-slate-800/60 to-slate-900/60 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/80 transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 shadow-xl hover:shadow-2xl"
+              >
+                <CardContent className="p-8 text-center">
+                  <div className="relative mb-6">
+                    <div className={`w-16 h-16 mx-auto rounded-full bg-gradient-to-r ${skill.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <skill.icon className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  
+                  <h3 className="text-xl font-semibold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300">
+                    {skill.name}
+                  </h3>
+                  
+                  <div className="w-full bg-slate-700/50 rounded-full h-3 mb-3 overflow-hidden">
                     <div 
-                      className="bg-gradient-to-r from-purple-500 to-blue-500 h-2 rounded-full transition-all duration-1000 ease-out"
+                      className={`bg-gradient-to-r ${skill.color} h-3 rounded-full transition-all duration-1000 ease-out transform group-hover:scale-x-105`}
                       style={{ width: `${skill.level}%` }}
                     ></div>
                   </div>
-                  <span className="text-slate-400 text-sm">{skill.level}%</span>
+                  
+                  <span className="text-slate-400 text-sm font-medium">
+                    {skill.level}% Proficiency
+                  </span>
                 </CardContent>
               </Card>
             ))}
@@ -283,36 +385,60 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            Featured <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Projects</span>
-          </h2>
+      {/* Enhanced Projects Section */}
+      <section className="py-24 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-800/20 to-transparent"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Featured <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Projects</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto rounded-full"></div>
+            <p className="text-slate-400 text-lg mt-6 max-w-2xl mx-auto">
+              Real-world projects showcasing data analysis and visualization skills
+            </p>
+          </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <Card key={project.title} className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all transform hover:scale-105">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <project.icon className="w-8 h-8 text-purple-400" />
-                    <CardTitle className="text-white">{project.title}</CardTitle>
+              <Card 
+                key={project.title} 
+                className="group bg-gradient-to-br from-slate-800/60 to-slate-900/60 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/80 transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-1 shadow-xl hover:shadow-2xl"
+              >
+                <CardHeader className="pb-4">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className={`w-12 h-12 bg-gradient-to-r ${project.gradient} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <project.icon className="w-6 h-6 text-white" />
+                    </div>
+                    <CardTitle className="text-white group-hover:text-purple-300 transition-colors duration-300">
+                      {project.title}
+                    </CardTitle>
                   </div>
+                  
                   <div className="flex flex-wrap gap-2">
                     {project.tools.map((tool) => (
-                      <Badge key={tool} className="bg-purple-600/20 text-purple-300 border-purple-500/30 text-xs">
+                      <Badge 
+                        key={tool} 
+                        className="bg-gradient-to-r from-purple-600/20 to-blue-600/20 text-purple-300 border-purple-500/30 text-xs hover:from-purple-500/30 hover:to-blue-500/30 transition-all duration-300"
+                      >
                         {tool}
                       </Badge>
                     ))}
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-slate-300 mb-4">
+                
+                <CardContent className="pt-0">
+                  <CardDescription className="text-slate-300 mb-6 text-base leading-relaxed">
                     {project.description}
                   </CardDescription>
-                  <Button variant="outline" size="sm" className="border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    View More
+                  
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="group/btn border-purple-400/50 text-purple-400 hover:bg-purple-400 hover:text-white transition-all duration-300 hover:scale-105"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform duration-300" />
+                    View Details
                   </Button>
                 </CardContent>
               </Card>
@@ -321,80 +447,107 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 px-4 bg-slate-800/30">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            My <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Services</span>
-          </h2>
+      {/* Enhanced Services Section */}
+      <section className="py-24 px-4 bg-gradient-to-b from-slate-800/30 to-slate-900/30 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1),transparent_70%)]"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              My <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Services</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto rounded-full"></div>
+            <p className="text-slate-400 text-lg mt-6 max-w-2xl mx-auto">
+              Comprehensive data science solutions to drive your business forward
+            </p>
+          </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all transform hover:scale-105">
-              <CardContent className="p-8 text-center">
-                <Database className="w-16 h-16 mx-auto mb-6 text-purple-400" />
-                <h3 className="text-2xl font-semibold text-white mb-4">Data Analysis</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Cleaning, transforming, and interpreting data for actionable insights. 
-                  I help businesses make data-driven decisions through comprehensive analysis.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-800/70 transition-all transform hover:scale-105">
-              <CardContent className="p-8 text-center">
-                <BarChart3 className="w-16 h-16 mx-auto mb-6 text-blue-400" />
-                <h3 className="text-2xl font-semibold text-white mb-4">Data Visualization</h3>
-                <p className="text-slate-300 leading-relaxed">
-                  Creating clear, interactive dashboards and visual reports that tell compelling 
-                  stories with your data and drive strategic decisions.
-                </p>
-              </CardContent>
-            </Card>
+            {services.map((service, index) => (
+              <Card 
+                key={service.title}
+                className="group bg-gradient-to-br from-slate-800/60 to-slate-900/60 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/80 transition-all duration-500 transform hover:scale-[1.02] hover:-translate-y-1 shadow-xl hover:shadow-2xl"
+              >
+                <CardContent className="p-8 text-center">
+                  <div className="relative mb-6">
+                    <div className={`w-20 h-20 mx-auto rounded-full bg-gradient-to-r ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <service.icon className="w-10 h-10 text-white" />
+                    </div>
+                    <div className="absolute -inset-2 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  
+                  <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-slate-300 leading-relaxed text-base">
+                    {service.description}
+                  </p>
+                  
+                  <div className="mt-6 flex justify-center">
+                    <div className="w-12 h-1 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full group-hover:w-16 transition-all duration-300"></div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-white mb-16">
-            Get In <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Touch</span>
-          </h2>
+      {/* Enhanced Contact Section */}
+      <section className="py-24 px-4 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-800/20 to-transparent"></div>
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
+              Get In <span className="bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">Touch</span>
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-purple-400 to-blue-400 mx-auto rounded-full"></div>
+            <p className="text-slate-400 text-lg mt-6 max-w-2xl mx-auto">
+              Ready to collaborate on your next data science project? Let's connect!
+            </p>
+          </div>
           
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-12">
             <div className="space-y-8">
-              <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+              <Card className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 shadow-xl">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-semibold text-white mb-6">Contact Information</h3>
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+                      <MessageSquare className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-white">Contact Information</h3>
+                  </div>
                   
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4">
-                      <Mail className="w-6 h-6 text-purple-400" />
-                      <span className="text-slate-300">aanchalrai2501@gmail.com</span>
-                    </div>
-                    
-                    <div className="flex items-center gap-4">
-                      <Phone className="w-6 h-6 text-purple-400" />
-                      <span className="text-slate-300">9695666546</span>
-                    </div>
-                    
-                    <div className="flex items-center gap-4">
-                      <Linkedin className="w-6 h-6 text-purple-400" />
-                      <span className="text-slate-300">aanchal2501</span>
-                    </div>
-                    
-                    <div className="flex items-center gap-4">
-                      <Github className="w-6 h-6 text-purple-400" />
-                      <span className="text-slate-300">aanchalrai2501</span>
-                    </div>
+                  <div className="space-y-6">
+                    {[
+                      { icon: Mail, label: "Email", value: "aanchalrai2501@gmail.com", color: "text-blue-400" },
+                      { icon: Phone, label: "Phone", value: "9695666546", color: "text-green-400" },
+                      { icon: Linkedin, label: "LinkedIn", value: "aanchal2501", color: "text-blue-400" },
+                      { icon: Github, label: "GitHub", value: "aanchalrai2501", color: "text-purple-400" }
+                    ].map((contact, index) => (
+                      <div key={contact.label} className="flex items-center gap-4 p-3 rounded-lg hover:bg-slate-700/30 transition-colors duration-300">
+                        <div className={`w-10 h-10 rounded-full bg-gradient-to-r from-slate-700 to-slate-600 flex items-center justify-center`}>
+                          <contact.icon className={`w-5 h-5 ${contact.color}`} />
+                        </div>
+                        <div>
+                          <p className="text-slate-400 text-sm">{contact.label}</p>
+                          <p className="text-slate-300 font-medium">{contact.value}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
             </div>
             
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
+            <Card className="bg-gradient-to-br from-slate-800/60 to-slate-900/60 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all duration-300 shadow-xl">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-semibold text-white mb-6">Send Message</h3>
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-white">Send Message</h3>
+                </div>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
@@ -402,7 +555,7 @@ const Index = () => {
                       placeholder="Your Name"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400"
+                      className="bg-slate-700/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-purple-400 focus:ring-purple-400/20 transition-all duration-300"
                       required
                     />
                   </div>
@@ -413,7 +566,7 @@ const Index = () => {
                       placeholder="Your Email"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400"
+                      className="bg-slate-700/50 border-slate-600/50 text-white placeholder:text-slate-400 focus:border-purple-400 focus:ring-purple-400/20 transition-all duration-300"
                       required
                     />
                   </div>
@@ -423,14 +576,14 @@ const Index = () => {
                       placeholder="Your Message"
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      className="bg-slate-700/50 border-slate-600 text-white placeholder:text-slate-400 min-h-[120px]"
+                      className="bg-slate-700/50 border-slate-600/50 text-white placeholder:text-slate-400 min-h-[120px] focus:border-purple-400 focus:ring-purple-400/20 transition-all duration-300"
                       required
                     />
                   </div>
                   
                   <Button 
                     type="submit" 
-                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 rounded-lg transform hover:scale-105 transition-all"
+                    className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold py-3 rounded-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-purple-500/25"
                   >
                     <MessageSquare className="w-5 h-5 mr-2" />
                     Send Message
@@ -442,12 +595,26 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 px-4 bg-slate-900/50 border-t border-slate-700">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-slate-400">
-            © 2024 Aanchal Rai. All rights reserved. • Made with ❤️ using React & Tailwind CSS
+      {/* Enhanced Footer */}
+      <footer className="py-12 px-4 bg-gradient-to-b from-slate-900/80 to-slate-900 border-t border-slate-700/50 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(147,51,234,0.05),transparent_70%)]"></div>
+        <div className="max-w-6xl mx-auto text-center relative z-10">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center">
+              <Code className="w-4 h-4 text-white" />
+            </div>
+            <span className="text-white font-semibold text-lg">Aanchal Rai</span>
+          </div>
+          
+          <p className="text-slate-400 mb-6">
+            © 2024 Aanchal Rai. All rights reserved. 
           </p>
+          
+          <div className="flex items-center justify-center gap-2 text-slate-500 text-sm">
+            <span>Made with</span>
+            <span className="text-red-400">❤️</span>
+            <span>using React & Tailwind CSS</span>
+          </div>
         </div>
       </footer>
     </div>
